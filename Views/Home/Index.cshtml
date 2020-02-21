@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Chefs Page";
+}
+
+<div class="row text-right mb-3">
+    <h1 class="col-7">Chefs | <a href="/dishes">Dishes</a></h1>
+    <h3 class="col-5 border-bottom"><a href="/new">Add a Chef</a></h3>
+</div>
+<div class="row border-bottom border-dark d-inline-block mb-3">
+    <h2>Check out our roster of Chefs!</h2>
+</div>
+<div class="row">
+      <table class="table table-striped">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col"># of Dishes</th>
+        </tr>
+        @foreach(Chef chef in Model)
+        {
+        <tr>
+            <td scope="row">@chef.FirstName @chef.LastName</td>
+            @{
+                int ChefAge = DateTime.Now.Year - chef.BirthDate.Year;
+                if(DateTime.Now.DayOfYear < chef.BirthDate.DayOfYear)
+                {
+                    ChefAge -= 1;
+                }
+            }
+            <td>@ChefAge</td>
+            <td>@chef.CreatedDishes.Count</td>
+        </tr>
+        }
+    </table>
+</div>

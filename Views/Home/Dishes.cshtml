@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Dishes Page";
+}
+
+<div class="row text-right mb-3">
+    <h1 class="col-7"><a href="/">Chefs</a> | Dishes</h1>
+    <h3 class="col-5"><a href="/dishes/new">Add a Dish</a></h3>
+</div>
+<div class="row border-bottom border-dark d-inline-block mb-3">
+    <h2>Yum, take a look at our tasty dishes!</h2>
+</div>
+<div class="row">
+      <table class="table table-striped">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Chef</th>
+            <th scope="col">Tastiness</th>
+            <th scope="col">Calories</th>
+        </tr>
+        @foreach(Dish dish in Model)
+        {
+        <tr>
+            <td scope="row">@dish.Name</td>
+            <td>@dish.Chef.FirstName @dish.Chef.LastName</td>
+            <td>@dish.Tastiness</td>
+            <td>@dish.Calories</td>
+        </tr>
+        }
+    </table>
+</div>
